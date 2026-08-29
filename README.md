@@ -60,3 +60,29 @@ This writes `output/results.json`. Generated build and output files are not comm
 - `include/pricer/monte_carlo.hpp` — antithetic GBM Monte Carlo and standard error
 - `src/main.cpp` — validation and JSON export harness
 - `tests/test_pricer.cpp` — numerical consistency and invariant checks
+
+## Design notes
+
+- Pricing routines are implemented in headers; the executable is a validation and JSON-export harness.
+- Monte Carlo accepts an explicit seed. Tests and the validation harness use fixed seeds for repeatable runs within a given standard-library implementation.
+- Closed-form, tree, simulation and finite-difference calculations are cross-validated against one another.
+- Monte Carlo estimates include an explicit standard error.
+
+## Limitations
+
+- Constant volatility
+- GBM/lognormal dynamics
+- Deterministic interest rates and dividend yield
+- No volatility-surface calibration
+- No market-data ingestion
+- No execution functionality
+- Educational and research implementation, not production pricing infrastructure
+
+## Possible extensions
+
+- Implied-volatility solver
+- Volatility-surface construction and calibration
+- Quasi-Monte Carlo
+- Additional variance-reduction techniques
+- PDE/finite-difference pricing methods
+- Profiling followed by justified parallelisation or SIMD optimisation
