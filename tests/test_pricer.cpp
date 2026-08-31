@@ -109,7 +109,7 @@ static void test_monte_carlo() {
     OptionSpec call{100, 100, 0.05, 0.0, 0.20, 1.0, OptionType::Call};
     McResult mc = mc_price(call, 200000, 12345);
     double bs = bs_price(call);
-    // Price within 3 standard errors of BS (honest error bar).
+    // Check the estimate against a three-standard-error interval around BS.
     if (!std::isfinite(mc.price) || !std::isfinite(mc.std_error)
         || std::fabs(mc.price - bs) > 3 * mc.std_error) {
         std::printf("FAIL MC within 3 SE: |%.4f-%.4f|=%.4f > 3*%.4f\n",
