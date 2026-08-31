@@ -14,7 +14,7 @@ struct McResult {
 
 // Terminal-value GBM Monte Carlo with antithetic variates.
 // n_pairs antithetic pairs are drawn; each pair's mean discounted payoff is one
-// sample, so the standard error reflects the variance reduction honestly.
+// sample, so the standard error is computed from the antithetic-pair means.
 inline McResult mc_price(const OptionSpec& o, long n_pairs, unsigned seed) {
     detail::validate_option_spec(o);
     if (n_pairs <= 1)

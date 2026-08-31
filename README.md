@@ -2,7 +2,11 @@
 
 [![CI](https://github.com/laithm/cpp-options-pricer/actions/workflows/ci.yml/badge.svg)](https://github.com/laithm/cpp-options-pricer/actions/workflows/ci.yml)
 
-A compact C++20 derivatives-pricing project designed around cross-validating closed-form and numerical methods on the same contracts. It supports European call and put valuation, early-exercise handling in the binomial model, and Monte Carlo estimation with reported sampling error. The focus is numerical consistency and validation, not a production trading interface.
+I built this small C++20 pricer to make several pricing methods check each
+other on the same contract. It supports European calls and puts,
+early-exercise handling in the binomial tree, and Monte Carlo estimates with a
+reported standard error. The point is to understand the numerical methods and
+their failure checks, not to pretend this is a production pricing system.
 
 ## Methods
 
@@ -78,11 +82,7 @@ This writes `output/results.json`. Generated build and output files are not comm
 - No execution functionality
 - Educational and research implementation, not production pricing infrastructure
 
-## Possible extensions
+## What I would add next
 
 - Implied-volatility solver
-- Volatility-surface construction and calibration
-- Quasi-Monte Carlo
-- Additional variance-reduction techniques
-- PDE/finite-difference pricing methods
-- Profiling followed by justified parallelisation or SIMD optimisation
+- A convergence and runtime study across tree depth and Monte Carlo sample size
